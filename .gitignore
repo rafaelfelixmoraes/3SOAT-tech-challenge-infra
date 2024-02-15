@@ -35,3 +35,9 @@ terraform.rc
 
 # lock files
 *.terraform.lock.hcl
+
+# Ignore VsCode files
+*.vscode
+
+# Plan backups
+azure_function_plan

@@ -7,7 +7,7 @@ on:
       - develop
   pull_request:
     branches:
-      - 'feature/**'
+      - 'devs/**'
 
 jobs:
   terraform:

@@ -7,7 +7,7 @@ on:
       - develop
   pull_request:
     branches:
-      - 'feature/*'
+      - 'feature/**'
 
 jobs:
   terraform:
@@ -17,10 +17,10 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v2
+        uses: hashicorp/setup-terraform@v3
         with:
           # terraform_version: 1.4.2
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}

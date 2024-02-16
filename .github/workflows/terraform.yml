@@ -6,8 +6,7 @@ on:
       - main
       - develop
   pull_request:
-    branches:
-      - 'devs/**'
+    
 
 jobs:
   terraform:

@@ -10,7 +10,7 @@ on:
 
 jobs:
   terraform:
-    name: "Terraform"
+    name: "G8 Tech-Challenge Terraform Workflow"
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write

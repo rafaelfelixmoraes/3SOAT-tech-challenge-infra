@@ -15,9 +15,16 @@ provider "azurerm" {
   features {}
 }
 
+# Create a resource group
+resource "azurerm_resource_group" "tc-g8-resource-group" {
+  name     = var.resource_group_name
+  location = var.region
+}
+
 # Create a module
 module "function" {
   source = "./function"
+  depends_on = [ azurerm_resource_group.tc-g8-resource-group ]
 }
 
 # Set a output after execution

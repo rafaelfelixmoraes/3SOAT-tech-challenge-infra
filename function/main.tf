@@ -1,14 +1,8 @@
-# Create a resource group
-resource "azurerm_resource_group" "tc-g8-resource-group" {
-  name     = "tc-g8-resources"
-  location = var.region
-}
-
 # Create a storage account
 resource "azurerm_storage_account" "tc-g8-storage-account" {
   name                     = "g8fiaptc"
-  resource_group_name      = azurerm_resource_group.tc-g8-resource-group.name
-  location                 = azurerm_resource_group.tc-g8-resource-group.location
+  resource_group_name      = var.resource_group_name
+  location                 = var.region
   account_tier             = "Standard"
   account_replication_type = "LRS"
   account_kind             = "Storage"
@@ -17,8 +11,8 @@ resource "azurerm_storage_account" "tc-g8-storage-account" {
 # Create a service plan
 resource "azurerm_service_plan" "tc-g8-service-plan" {
   name                = "tc-g8-service-plan"
-  location            = azurerm_resource_group.tc-g8-resource-group.location
-  resource_group_name = azurerm_resource_group.tc-g8-resource-group.name
+  location            = var.region
+  resource_group_name = var.resource_group_name
   os_type             = "Linux"
   sku_name            = "Y1"
 }
@@ -26,8 +20,8 @@ resource "azurerm_service_plan" "tc-g8-service-plan" {
 # Create a linux function app
 resource "azurerm_linux_function_app" "tc-g8-function-app" {
   name                      = "tc-g8-function-app"
-  resource_group_name       = azurerm_resource_group.tc-g8-resource-group.name
-  location                  = azurerm_resource_group.tc-g8-resource-group.location
+  resource_group_name       = var.resource_group_name
+  location                  = var.region
   service_plan_id           = azurerm_service_plan.tc-g8-service-plan.id
   
   storage_account_name      = azurerm_storage_account.tc-g8-storage-account.name

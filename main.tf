@@ -23,8 +23,8 @@ resource "azurerm_resource_group" "tc-g8-resource-group" {
 
 # Create a module
 module "function" {
-  source = "./function"
-  depends_on = [ azurerm_resource_group.tc-g8-resource-group ]
+  source     = "./function"
+  depends_on = [azurerm_resource_group.tc-g8-resource-group]
 }
 
 # Set a output after execution

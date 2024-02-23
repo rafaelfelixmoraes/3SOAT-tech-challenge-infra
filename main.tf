@@ -21,10 +21,16 @@ resource "azurerm_resource_group" "tc-g8-resource-group" {
   location = var.region
 }
 
-# Create a module
+# Create Function Module
 module "function" {
   source     = "./function"
   depends_on = [azurerm_resource_group.tc-g8-resource-group]
+}
+
+# Create Postgres-DB Module
+module "postgres" {
+  source     = "./postgres_db"
+  depends_on = [module.function]
 }
 
 # Set a output after execution

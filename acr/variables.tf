@@ -6,6 +6,18 @@ variable "region" {
 
 variable "resource_group_name" {
     type = string
-    default = "acr-resource-group"
+    default = "tc-g8-resources"
     description = "Resource Group Name"
+}
+
+variable "acr_name" {
+    type = string
+    default = "acrrepository"
+    description = "ACR Name"
+}
+
+variable "sku_type" {
+    type = string
+    default = "Basic"
+    description = "Sku Type"
 }

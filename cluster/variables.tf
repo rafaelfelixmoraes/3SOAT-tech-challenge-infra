@@ -6,7 +6,7 @@ variable "region" {
 
 variable "resource_group_name" {
     type = string
-    default = "tech-challenge"
+    default = "tc-g8-resources"
     description = "Resource Group Name"
 }
 

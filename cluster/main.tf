@@ -10,10 +10,10 @@ resource "azurerm_kubernetes_cluster" "tech-challenge-k8s" {
     vm_size    = var.vm_size
   }
 
-  #service_principal {
-  #  client_id     = "0000000"
-  #  client_secret = "00000000"
-  #}
+  service_principal {
+    client_id     = "0000000"
+    client_secret = "00000000"
+  }
 }
 
 resource "azurerm_kubernetes_cluster_node_pool" "cluster-node-pool" {

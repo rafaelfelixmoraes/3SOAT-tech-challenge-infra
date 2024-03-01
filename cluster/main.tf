@@ -11,8 +11,8 @@ resource "azurerm_kubernetes_cluster" "tech-challenge-k8s" {
   }
 
   service_principal {
-    client_id     = "e0e46b94-74f2-4134-a6eb-7dcf00a5f1d4"
-    client_secret = "O288Q~pkw1TiJdHyJ_.orZNDkJ3qWqN9EAj5~bWZ"
+    client_id     = "0000000"
+    client_secret = "00000000"
   }
 }
 

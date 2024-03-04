@@ -1,27 +1,12 @@
 module.exports = async function (context, req) {
-    context.log(`Obtendo token no Azure EntraID`);
-
-    const tenantID = "xxxxx";
-
-    const formData = new URLSearchParams();
-    formData.append("grant_type", "Client_Credentials");
-    formData.append("client_id", "xxxxx");
-    formData.append("client_secret", "xxxxx");
-    formData.append("scope", "https://aks-aad-server.azure.com/.default");
+    context.log(`Consultando dados do endereço para o CEP: ${req.query.cep}`);
     
-    const azureEntraRequest = await fetch(`https://login.microsoftonline.com/${tenantID}/oauth2/v2.0/token`, {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: formData.toString(),
-    json: true
-    });
+    const requestTest = await fetch(`https://viacep.com.br/ws/${req.query.cep}/json`);
 
-    const azureToken = await azureEntraRequest.json();
+    const responseTest = await requestTest.json();
 
     context.res = {
         // status: 200, /* Defaults to 200 */
-        body: azureToken
+        body: responseTest
     };
 }

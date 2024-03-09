@@ -27,24 +27,6 @@ module "function" {
   depends_on = [azurerm_resource_group.tc-g8-resource-group]
 }
 
-# Create Postgres-DB Module
-module "postgres" {
-  source     = "./postgres_db"
-  depends_on = [module.function]
-}
-
-# Create ACR Module
-module "acr" {
-  source     = "./acr"
-  depends_on = [module.postgres]
-}
-
-# Create Cluster Module
-module "cluster" {
-  source     = "./cluster"
-  depends_on = [module.acr]
-}
-
 # Set a output after execution
 output "function_name" {
   value = module.function.function_name
